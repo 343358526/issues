@@ -1,0 +1,15 @@
+1、远程协助武汉农商行项目过程中遇到一个时间记录读取问题。
+
+使用SharedPreferenceUtil.setInfoToShared("GO_TO_BACK", System.currentTimeMillis());保存当前系统时间
+
+发现在读取时SharedPreferenceUtil.getInfoFromShared("GO_TO_BACK", 0)读取到的时间始终与存储的时间不同
+
+这里项目中实际不需要用此方式来记录时间。
+如遇到上述问题可以将时间变为String类型进行保存，读取时再进行转换即可
+代码如下：
+SharedPreferenceUtil.setInfoToShared("GO_TO_BACK", System.currentTimeMillis()+"");
+
+SharedPreferenceUtil.getInfoFromShared("GO_TO_BACK", "0")
+
+Long.parseLong(读出的时间)即可
+
